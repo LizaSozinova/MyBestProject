@@ -6,6 +6,8 @@ from carts.models import Cart
 from goods.models import Products
 from carts.utils import get_user_carts
 
+from django.http import HttpResponse
+
 
 def cart_add(request):
 
@@ -86,3 +88,4 @@ def cart_remove(request):
     }
 
     return JsonResponse(response_data)
+

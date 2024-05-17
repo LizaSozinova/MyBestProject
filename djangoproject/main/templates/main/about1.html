@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block modal_cart %}
+{% include "includes/cart_button.html" %}
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{%static 'deps/css/my_footer_css.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="mt-5 pt-5 bg-white custom-shadow rounded">
+        <h2 class="m-2"><strong>{{ content }}</strong></h2>
+        <p class="m-2">{{ text_on_page}}</p>
+    </div>
+
+{% endblock %}
+
+{% block footer %}
+<div class="footer-container">
+    <p class="logo_foot">La Sharm</p>
+        <div class="footer-catalog">
+            <h3>Каталог</h3>
+            <ul>
+                <a href="http://127.0.0.1:8000/catalog/ukrasheniya-na-sheyu/" class="footer-href">
+                    <li>Украшения на шею</li>
+                </a>
+                <a href="http://127.0.0.1:8000/catalog/sergi/" class="footer-href">
+                    <li>Серьги</li>
+                </a>
+                <a href="http://127.0.0.1:8000/catalog/braslety/" class="footer-href">
+                    <li>Браслеты</li>
+                </a>
+                <a href="http://127.0.0.1:8000/catalog/broshi/" class="footer-href">
+                    <li>Броши</li>
+                </a>
+            </ul>
+        </div>
+        <div class="customers">
+            <h3>Покупателям</h3>
+            <ul>
+                <li><a class="footer-href" href="{% url 'main:about' %}">О нас</a></li>
+                <li><a class="footer-href" href="#">Доставка и оплата</a></li>
+                <li><a class="footer-href" href="#">Отзывы</a></li>
+            </ul>
+        </div>
+        <div class="contacts">
+            <h3>Контакты</h3>
+            <p>+7 (965) 622-73-33</p>
+            <p>edalinjewelry@gmail.com</p>
+
+            <div class="social">
+                <p>Cоц. сети</p>
+                <div class="social-icons">
+                    <a href="#" class="cherta">
+                        <img src="{%static 'deps/icons/vk.svg' %}"  alt="" class="">
+                    </a>
+                    <a href="#" class="cherta">
+                        <img src="{%static 'deps/icons/tg.svg' %}"  alt="">
+                    </a>
+                    <a href="#" class="cherta">
+                        <img src="{%static 'deps/icons/wa.svg' %}"  alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+</div>
+{% endblock %}
+
+
+
+

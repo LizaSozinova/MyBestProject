@@ -10,15 +10,200 @@
 {% endblock %}
 
 {% block content %}
-    <h1 class="mt-5 pt-5"><strong>{{ content }}</strong></h1>
+    <div class="container">
+        <div class="image-container">
+            <img src="{%static 'deps/images/Mat_background.png' %}" alt="Image">
+            <div class="text-overlay">
+                Уникальные украшения со смыслом
+            </div>
+            <div class="text-below">
+                Здесь Вы найдете то, что подчеркнет индивидуальность и подойдет именно Вам!
+            </div>
+            <button class="custom-button">Оформить заказ</button>
+        </div>
+    </div>
+    <div class="inspiration">        
+        <div class="text-image-container">
+            <div class="text-side">
+                <p>Красота — это энергия, пробуждающая наши чувства и эмоции. Подарите себе удовольствие от красоты, которую мы создаем с любовью и страстью!</p>
+            </div>
+            <div class="image-side">
+                <img src="{%static 'deps/images/motivation.jpg' %}" alt="Изображение">
+            </div>
+        </div>
+    </div>   
+
+    <p class="index-new">Новинки</p> 
+
+    <div class="container mt-5">
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <!-- Карточки товаров -->
+                <div class="carousel-item active">
+                    <div class="d-flex justify-content-around">
+                        <!-- Карточки товаров -->
+                        <div class="card" style="width: 18rem;">
+                            <img src="{% static 'deps/images/new/cep_heart.jpg' %}" class="product-image" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Цепь «Сердцебиение»</h5>
+                                <p class="card-text">2100 ₽</p>  
+                            </div>
+                        </div>
+                        <div class="card" style="width: 18rem;">
+                            <img src="{% static 'deps/images/new/braslet_zhelanie.jpg' %}" class="product-image" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Браслет «Желание»</h5>
+                                <p class="card-text">2900 ₽</p>
+                                
+                            </div>
+                        </div>
+                        <div class="card" style="width: 18rem;">
+                            <img src="{% static 'deps/images/new/Kolca_love.jpg' %}" class="product-image" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Кольца «Любовь»</h5>
+                                <p class="card-text">800 ₽</p>
+                                
+                            </div>
+                        </div>
+                        <div class="card" style="width: 18rem;">
+                            <img src="{% static 'deps/images/new/Sergy_night.jpg' %}" class="product-image" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Серьги «Звёздная ночь»</h5>
+                                <p class="card-text">2500 ₽</p>
+                               
+                            </div>
+                        </div>
+                        <!-- Добавьте еще карточки товаров по аналогии -->
+                    </div>
+                </div>
+                <!-- Добавьте еще слайды для карточек товаров -->
+
+                <div class="carousel-item">
+                    <div class="d-flex justify-content-around">
+                        <!-- Карточки товаров -->
+                        <div class="card" style="width: 18rem;">
+                            <img src="{% static 'deps/images/new/sergy_base.jpg' %}" class="product-image" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title-new">Серьги «База»</h5>
+                                <p class="card-text-new">1500 ₽</p>
+                                
+                            </div>
+                        </div>
+                        <div class="card" style="width: 18rem;">
+                            <img src="{% static 'deps/images/new/sergy_laMansh.jpg' %}" class="product-image" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Серьги «Ла-Манш»</h5>
+                                <p class="card-text">3400 ₽</p>
+                                
+                            </div>
+                        </div>
+                        <div class="card" style="width: 18rem;">
+                            <img src="{% static 'deps/images/new/sergy_heart.jpg' %}" class="product-image" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Серьги «Сердце»</h5>
+                                <p class="card-text">1500 ₽</p>            
+                            </div>
+                        </div>
+                        <div class="card" style="width: 18rem;">
+                            <img src="{% static 'deps/images/new/cep_parallel.jpg' %}" class="product-image" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Цепь «Параллель»</h5>
+                                <p class="card-text">2700 ₽</p>
+                            </div>
+                        </div>
+                        <!-- Добавьте еще карточки товаров по аналогии -->
+                    </div>
+                </div>
+
+            </div>
+            <!-- Стрелки переключения -->
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+
+    <p class="index-new">Каталог</p> 
+    <div class="container-catalog-index">
+        <div class="line">
+            <a href="http://127.0.0.1:8000/catalog/ukrasheniya-na-sheyu/">
+                <img src="{%static 'deps/images/neck.png' %}"  alt="...">
+            </a>
+            <a href="http://127.0.0.1:8000/catalog/sergi/">
+                <img src="{%static 'deps/images/earrings.png' %}"  alt="">
+            </a>
+            
+        </div>
+    </div>
+    <div class="container-catalog-index">
+        <div class="line">
+            <a href="http://127.0.0.1:8000/catalog/braslety/">
+                <img src="{%static 'deps/images/bracelets.png' %}"  alt="">
+            </a>
+            <a href="http://127.0.0.1:8000/catalog/broshi/">
+                <img src="{%static 'deps/images/brooches.jpg' %}"  alt="">
+            </a>
+        </div>
+    </div>
+    
+      
+
 {% endblock %}
 
 {% block footer %}
-    <footer class="py-4 bg-dark">
-        <div class="container">
-            <p class="m-0 text-center text-white">Copyright &copy; Home Python Hub Studio 2023</p>
-        </div>
-    </footer>
+    <div class="footer-container">
+            <p class="logo_foot">La Sharm</p>
+                <div class="footer-catalog">
+                    <h3>Каталог</h3>
+                    <ul>
+                        <a href="http://127.0.0.1:8000/catalog/ukrasheniya-na-sheyu/" class="footer-href">
+                            <li>Украшения на шею</li>
+                        </a>
+                        <a href="http://127.0.0.1:8000/catalog/sergi/" class="footer-href">
+                            <li>Серьги</li>
+                        </a>
+                        <a href="http://127.0.0.1:8000/catalog/braslety/" class="footer-href">
+                            <li>Браслеты</li>
+                        </a>
+                        <a href="http://127.0.0.1:8000/catalog/broshi/" class="footer-href">
+                            <li>Броши</li>
+                        </a>
+                    </ul>
+                </div>
+                <div class="customers">
+                    <h3>Покупателям</h3>
+                    <ul>
+                        <li><a class="footer-href" href="{% url 'main:about' %}">О нас</a></li>
+                        <li><a class="footer-href" href="#">Доставка и оплата</a></li>
+                        <li><a class="footer-href" href="#">Отзывы</a></li>
+                    </ul>
+                </div>
+                <div class="contacts">
+                    <h3>Контакты</h3>
+                    <p>+7 (965) 622-73-33</p>
+                    <p>edalinjewelry@gmail.com</p>
+
+                    <div class="social">
+                        <p>Cоц. сети</p>
+                        <div class="social-icons">
+                            <a href="https://vk.com/la_sharm_jewellery" class="cherta">
+                                <img src="{%static 'deps/icons/vk.svg' %}"  alt="" class="">
+                            </a>
+                            <a href="#" class="cherta">
+                                <img src="{%static 'deps/icons/tg.svg' %}"  alt="">
+                            </a>
+                            <a href="#" class="cherta">
+                                <img src="{%static 'deps/icons/wa.svg' %}"  alt="">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+    </div>
 {% endblock %}
 
 

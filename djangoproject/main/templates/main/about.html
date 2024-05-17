@@ -1,30 +1,127 @@
-{% extends "base.html" %}
 {% load static %}
+{% load goods_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>О нас</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{%static 'deps/css/style.css' %}">
+    <link rel="stylesheet" href="{%static 'deps/css/my_css.css' %}">
+</head>
+<body>
+    <header>
+        <div class="top-bar">
+            <div class="left">
+                {% if not user.is_authenticated%}
+                <li class="nav-item">
+                    <a class="nav-link  text-white text-shapka" href="{% url 'users:login' %}">
+                        <img src="{%static 'deps/icons/user.svg' %}" alt="People">
+                        Вход/регистрация
+                    </a>
+                </li>
+                {% else %}
+                <li class="nav-item dropdown ">
+                    <div class="dropdown">
+                        <button class="dropbtn nav-link  text-white text-shapka">
+                            <img src="{%static 'deps/icons/user.svg' %}" alt="People">
+                            Мой профиль
+                        </button>
+                        <div class="dropdown-content text-shapka-drop">
+                            <a href="{% url 'users:profile' %}">Личный кабинет</a>
+                            {% if user.is_admin or user.is_staff %}
+                            <a href="{% url 'admin:index' %}">Админ панель</a>    
+                            {% endif %}
+                            <a href="{% url 'users:logout' %}">Выйти</a>
+                        </div>
+                    </div>
+                {% endif %}
+                </li>
+                <form class="d-flex" role="search" action="{% url 'catalog:search' %}" method="get">
+                    <div class="input-group">
+                        <input class="form-control search" type="search" name="q" placeholder="Поиск" aria-label="Поиск">
+                        <button class="btn btn-outline-success text-white btn_search" type="submit">
+                            <img src="{%static 'deps/icons/search.svg' %}" alt="search">
+                        </button>
+                    </div>
+                </form>
+                <!-- Корзина -->
+                {% block modal_cart %}{% endblock %}
+            </div>
+        </div>
+        <nav class="main-nav">
+            <a href="{% url 'main:index' %}" class="logo">La Sharm</a>
+            <div class="dropdown">
+                <button class="dropbtn btn-catalog text-shapka">Каталог</button>
+                <div class="dropdown-content text-shapka-drop">
+                    {% tag_categories as categories %}
+                    {% for category in categories %}
+                        <li><a class="" href="{% url 'catalog:index' category.slug %}">{{category.name}}</a></li>
+                    {% endfor %}
+                </div>
+            </div>
+            <a class="text-shapka" href="{% url 'main:about' %}">О нас</a>
+            <a class="text-shapka" href="{% url 'main:delivery' %}">Доставка</a>
+            <a class="text-shapka" href="#">Отзывы</a>
+        </nav>
+    </header>
+    <div class="container">
 
-{% block modal_cart %}
-{% include "includes/cart_button.html" %}
-{% endblock %}
+        <div class="main">
+    
+            <div class ="slogan">
+                <p>
+                    <big style="font-family: Vetrino;">La Sharm</big> —  бренд украшений вне времени и возраста
+                </p>
 
-{% block css %}
-    <link rel="stylesheet" href="{%static 'deps/css/my_footer_css.css' %}">
-{% endblock %}
-
-{% block content %}
-    <div class="mt-5 pt-5 bg-white custom-shadow rounded">
-        <h2 class="m-2"><strong>{{ content }}</strong></h2>
-        <p class="m-2">{{ text_on_page}}</p>
+                
+            </div>
+        
+            <div class="one">
+                <div class="text">
+                    <p>Мы стремимся к тому, чтобы каждое наше изделие было исключительным в своем роде, как уникальное произведение искусства.</p>
+                    <p>Наши украшения не просто дополняют образ, они становятся его важной частью, придают особый шарм и делают обладателя еще прекраснее.</p>
+                   
+                </div>
+                
+                <div class="pag">
+                    <img src="{%static 'deps/images/about2.jpg' %}" alt="" />
+                </div>
+            </div>
+            
+            <div class="two">
+                <div class="text">
+                    <p>Наша история началась с мечты о красоте и элегантности, которую можно воплотить в украшениях. </p> 
+                    <p>Основатель нашей компании, Лада Шарманова, с теплотой в сердце и искусством в руках, принялась за создание украшений, которые не только украшают, но и рассказывают истории, воплощают мечты и подчеркивают индивидуальность каждого.</p>
+                   
+                </div>
+                
+                <div>
+                    <img src="{%static 'deps/images/about1.png' %}" alt="" />
+                </div>
+            </div>
+        
+            <div class="three">
+                <div class="text">
+                    <p>Мы создаем украшения ручной работы из самых качественных материалов: драгоценные и полудрагоценные камни, золото, серебро и платина.</p>  
+                    <p>Наша коллекция включает в себя утонченные колье, изящные браслеты, великолепные серьги и кольца, которые вдохновляют, восхищают и радуют.</p>
+                   
+                </div>
+                
+                <div>
+                    <img src="{%static 'deps/images/about3.jpg' %}" alt="" />
+                </div>
+            </div>
+            
+        </div>
     </div>
 
-{% endblock %}
-
-{% block footer %}
-    <footer class="py-4 bg-dark">
-        <div class="container">
-            <p class="m-0 text-center text-white">Copyright &copy; Home Python Hub Studio 2023</p>
-        </div>
-    </footer>
-{% endblock %}
+    
+</body>
 
 
-
-
+</html>

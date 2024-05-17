@@ -53,7 +53,7 @@ def registration(request):
             auth.login(request, user)
 
             if session_key:
-                Cart.objects.filter(session_key=session_key).update(user=ser)
+                Cart.objects.filter(session_key=session_key).update(user=user)
 
             messages.success(request, f"{user.username}, Вы успешно зарегистрированы и вошли в аккаунт")
             return HttpResponseRedirect(reverse('main:index'))

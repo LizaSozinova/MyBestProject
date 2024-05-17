@@ -1,0 +1,53 @@
+@font-face {
+    font-family: "Vetrino";
+    font-style: normal;
+    font-weight: 400;
+    src: url(/fonts/Vetrino.otf); 
+  
+    /* Браузер сначала попробует найти шрифт локально
+    src: local("Roboto"),
+        Если не получилось, загрузит woff2 
+         url("/fonts/roboto.woff2") format("woff2"),
+         Если браузер не поддерживает woff2, загрузит woff 
+         url("/fonts/roboto.woff") format("woff");   */
+}
+  
+body {
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;
+}
+.name-title{
+    font-family: Vetrino;
+    font-size: 48px;
+}
+.main-container{
+    padding-inline: 80px 
+}
+.name-courier{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 40px; 
+    text-transform:uppercase;
+    font-weight: bold;
+}
+.name-courier>img{
+    width: 30px;
+    height: 30px;
+    padding-right: 10px;
+}
+
+.t{
+    font-weight: normal;
+    text-transform: none;
+    padding-inline: 30px;
+}
+
+.slogan{
+    font-size: 32px;
+    text-transform:uppercase;
+    text-align: center;
+    padding-top: 80px;
+    letter-spacing: 0.25em;
+
+}

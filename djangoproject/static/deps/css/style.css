@@ -1,0 +1,115 @@
+@font-face {
+    font-family: "Vetrino";
+    font-style: normal;
+    font-weight: 400;
+    src: url(/fonts/Vetrino.otf); 
+  
+    /* Браузер сначала попробует найти шрифт локально
+    src: local("Roboto"),
+        Если не получилось, загрузит woff2 
+         url("/fonts/roboto.woff2") format("woff2"),
+         Если браузер не поддерживает woff2, загрузит woff 
+         url("/fonts/roboto.woff") format("woff");   */
+  }
+  
+body {
+    font-family: "Montserrat", sans-serif;
+}
+.container{
+    padding-inline: 80px ;
+}
+
+.slogan{
+    margin-block: 80px;
+    font-size: 2em;
+    text-align: center;
+    
+}
+/* .slogan>big{
+    font-family: "Vetrino"
+
+} */
+.one,
+.three{
+    display: flex;
+    flex-direction: row; 
+    margin-block: 80px;
+}
+.two{
+    display: flex;
+    flex-direction: row-reverse;
+    margin-block: 80px; 
+}
+.text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+    padding-inline: 80px;
+
+}
+.text p{
+    padding-block: 0.5em;
+    font-size: 20px;
+}    
+div>img{
+    display: flex;
+    width: 453px;
+    height: 676px;
+}  
+@media(max-width: 1130px){
+    .text{
+        padding-inline: 40px;
+    }
+    .slogan{
+        font-size: 1.5rem;
+
+    }
+}
+@media(max-width: 1000px){
+    div>img{
+        width: 302px;
+        height: 450px;
+    }  
+}
+@media(max-width:800px){
+    .text p{
+        font-size: 1rem;
+    }
+    .slogan{
+        font-size: 1.25rem;
+
+    }   
+}
+@media(max-width:750px){
+    .text p{
+        font-size: 1rem;
+    }
+    .text{
+        padding-inline: 0px;
+    }
+    .slogan{
+        font-size: 1.20rem;
+
+    } 
+    .one,
+    .two,
+    .three{
+        
+        flex-direction: column; 
+        justify-content: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    div>img{
+        /* align-items: center; */
+        width: 453px;
+        height: 676px;
+       
+        
+    } 
+    .text p{
+        width: 100%;
+    }  
+
+}

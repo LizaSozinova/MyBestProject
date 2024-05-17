@@ -1,0 +1,242 @@
+{% load static %}
+{% load goods_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Доставка и оплата</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{%static 'deps/css/style-dostavka.css' %}">
+    <link rel="stylesheet" href="{%static 'deps/css/bootstrap/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{%static 'deps/css/my_css.css' %}">
+</head>
+<body>
+
+    <header>
+        <div class="top-bar">
+            <div class="left">
+                {% if not user.is_authenticated%}
+                <li class="nav-item">
+                    <a class="nav-link  text-white text-shapka" href="{% url 'users:login' %}">
+                        <img src="{%static 'deps/icons/user.svg' %}" alt="People">
+                        Вход/регистрация
+                    </a>
+                </li>
+                {% else %}
+                <li class="nav-item dropdown ">
+                    <div class="dropdown">
+                        <button class="dropbtn nav-link  text-white text-shapka">
+                            <img src="{%static 'deps/icons/user.svg' %}" alt="People">
+                            Мой профиль
+                        </button>
+                        <div class="dropdown-content text-shapka-drop">
+                            <a href="{% url 'users:profile' %}">Личный кабинет</a>
+                            {% if user.is_admin or user.is_staff %}
+                            <a href="{% url 'admin:index' %}">Админ панель</a>    
+                            {% endif %}
+                            <a href="{% url 'users:logout' %}">Выйти</a>
+                        </div>
+                    </div>
+                {% endif %}
+                </li>
+                <form class="d-flex" role="search" action="{% url 'catalog:search' %}" method="get">
+                    <div class="input-group">
+                        <input class="form-control search" type="search" name="q" placeholder="Поиск" aria-label="Поиск">
+                        <button class="btn btn-outline-success text-white btn_search" type="submit">
+                            <img src="{%static 'deps/icons/search.svg' %}" alt="search">
+                        </button>
+                    </div>
+                </form>
+                <!-- Корзина -->
+                {% block modal_cart %}{% endblock %}
+            </div>
+        </div>
+        <nav class="main-nav">
+            <a href="{% url 'main:index' %}" class="logo">La Sharm</a>
+            <div class="dropdown">
+                <button class="dropbtn btn-catalog text-shapka">Каталог</button>
+                <div class="dropdown-content text-shapka-drop">
+                    {% tag_categories as categories %}
+                    {% for category in categories %}
+                        <li><a class="" href="{% url 'catalog:index' category.slug %}">{{category.name}}</a></li>
+                    {% endfor %}
+                </div>
+            </div>
+            <a class="text-shapka" href="{% url 'main:about' %}">О нас</a>
+            <a class="text-shapka" href="{% url 'main:delivery' %}">Доставка</a>
+            <a class="text-shapka" href="#">Отзывы</a>
+        </nav>
+    </header>
+
+    <div class="main-container">
+
+        <div class="main">
+            <p class="name-title">Доставка</p>
+            <div>
+                <p>Мы понимаем, что для вас важно получить ваше украшение вовремя и в отличном состоянии. Поэтому мы предлагаем надежные и удобные способы доставки:</p>
+            </div>
+            <div class="name-courier">
+                <img src="{%static 'deps/images/truck.svg' %}" alt="">
+                <p>Курьерская доставка:</p>
+            </div>
+            <div class="about-courier">
+                
+                <p>Мы осуществляем курьерскую доставку по всей стране.</p>
+                <p>Срок доставки: обычно от 1 до 5 рабочих дней, в зависимости от вашего местоположения.</p>
+                <p>Стоимость доставки рассчитывается индивидуально в зависимости от выбранного товара и адреса доставки.</p>
+           
+            </div>
+           
+           
+            <div class="name-courier">
+                <img src="{%static 'deps/images/mail.svg' %}" alt="">
+                <p>Почтовая доставка:</p>
+            </div>
+            <div class="about-courier">
+                
+                <p>Возможность отправки почтовыми службами по всему миру.</p>
+                <p>Срок доставки: обычно от 7 до 14 рабочих дней, в зависимости от вашего местоположения и выбранной почтовой службы.</p>
+                <p>Стоимость доставки зависит от веса и габаритов заказа, а также от страны доставки.</p>
+           
+             </div>
+
+        
+
+            <div class="name-courier">
+                <img src="{%static 'deps/images/human.svg' %}" alt="">
+                <p>Самовывоз:</p>
+            </div>
+            <div class="about-courier">
+                
+                <p>Вы можете забрать ваш заказ самостоятельно из нашей мастерской по адресу г.Железногорск, ул.60 лет ВЛКСМ 58</p>
+                <p>Для удобства, пожалуйста, предварительно согласуйте дату и время визита.</p>
+                           
+            </div>
+            
+      
+
+
+            <p class="name-title">Оплата</p>
+            <div>
+                <p>Мы предлагаем удобные способы оплаты, чтобы вы могли выбрать наиболее подходящий для себя:</p>
+            </div>
+            <div class="name-courier">
+                <img src="{%static 'deps/images/rybli.svg' %}" alt="">
+                <p>Наличными курьеру:</p>
+            </div>
+            <div class="about-courier">
+                
+                <p>Оплата заказа наличными курьеру при доставке.</p>
+                          
+            </div>
+
+
+            <div class="name-courier">
+                <img src="{%static 'deps/images/captions.svg' %}" alt="">
+                <p>Банковский перевод:</p>
+            </div>
+            <div class="about-courier">
+                
+                <p>Оплата заказа банковским переводом на наш расчетный счет. </p>
+                <p>Пожалуйста, свяжитесь с нашим менеджером для получения реквизитов.</p>
+                           
+            </div>
+
+            <div class="name-courier">
+                <img src="{%static 'deps/images/wallet.svg' %}" alt="">
+                <p>Оплата при самовывозе:</p>
+            </div>
+            <div class="about-courier">
+                
+                <p>Оплата заказа наличными или банковской картой при самостоятельном заборе из нашей мастерской.</p>
+                
+                           
+            </div>
+
+
+            <p class="name-title">Контактная информация</p>
+            <div>
+                <p>Мы предлагаем удобные способы оплаты, чтобы вы могли выбрать наиболее подходящий для себя:</p>
+            </div>
+            <div class="name-courier">
+               
+                <p>Телефон:</p>
+                <p class="t">+7 (965) 622-73-33</p>
+            </div>
+            <div class="name-courier">
+               
+                <p>Электронная почта:</p>
+                <p class="t">edalinjewelry@gmail.com</p>
+            </div>
+
+            <div class="name-courier">
+               
+                <p>Адрес:</p>
+                <p class="t"> ул.60 лет ВЛКСМ 58, г. Железногорск</p>
+            </div>
+
+            <p class="slogan">Приходите к нам в мастерскую и откройте для себя мир уникальных и изысканных украшений, которые будут с вами всю жизнь!</p>
+
+
+        </div>     
+    
+        </div>
+    </div>
+
+    {% block footer %}
+    <div class="footer-container">
+        <p class="logo_foot">La Sharm</p>
+            <div class="footer-catalog">
+                <h3>Каталог</h3>
+                <ul>
+                    <a href="http://127.0.0.1:8000/catalog/ukrasheniya-na-sheyu/" class="footer-href">
+                        <li>Украшения на шею</li>
+                    </a>
+                    <a href="http://127.0.0.1:8000/catalog/sergi/" class="footer-href">
+                        <li>Серьги</li>
+                    </a>
+                    <a href="http://127.0.0.1:8000/catalog/braslety/" class="footer-href">
+                        <li>Браслеты</li>
+                    </a>
+                    <a href="http://127.0.0.1:8000/catalog/broshi/" class="footer-href">
+                        <li>Броши</li>
+                    </a>
+                </ul>
+            </div>
+            <div class="customers">
+                <h3>Покупателям</h3>
+                <ul>
+                    <li><a class="footer-href" href="{% url 'main:about' %}">О нас</a></li>
+                    <li><a class="footer-href" href="#">Доставка и оплата</a></li>
+                    <li><a class="footer-href" href="#">Отзывы</a></li>
+                </ul>
+            </div>
+            <div class="contacts">
+                <h3>Контакты</h3>
+                <p>+7 (965) 622-73-33</p>
+                <p>edalinjewelry@gmail.com</p>
+
+                <div class="social">
+                    <p>Cоц. сети</p>
+                    <div class="social-icons">
+                        <a href="https://vk.com/la_sharm_jewellery" class="cherta">
+                            <img src="{%static 'deps/icons/vk.svg' %}"  alt="" class="">
+                        </a>
+                        <a href="#" class="cherta">
+                            <img src="{%static 'deps/icons/tg.svg' %}"  alt="">
+                        </a>
+                        <a href="#" class="cherta">
+                            <img src="{%static 'deps/icons/wa.svg' %}"  alt="">
+                        </a>
+                    </div>
+                </div>
+            </div>
+    </div> 
+    {% endblock %}
+
+    
+</body>
+</html>

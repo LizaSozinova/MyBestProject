@@ -4,12 +4,16 @@
 {% user_carts request as carts %}
 
 <div>
-    <button type="button" class="btn btn-dark btn-secondary d-flex" id="modalButton"
+    <!-- <button type="button" class="btn-cart" id="modalButton"
         aria-expanded="false">
-        <img class="mx-1" src="{%static 'deps/icons/basket2-fill.svg' %}" alt="Catalog Icon" width="24"
-            height="24">
+        <img class="mx-1" src="{%static 'deps/icons/shopping-cart.svg' %}" alt="Catalog Icon" width="27"
+            height="27">
         <span id="goods-in-cart-count">{{ carts.total_quantity }}</span>
-    </button>
+    </button> -->
+    <a class="nav-link  text-white" id="modalButton" aria-expanded="false">
+        <img src="{%static 'deps/icons/shopping-cart.svg' %}" alt="Cart">
+        <span id="goods-in-cart-count">{{ carts.total_quantity }}</span>
+    </a>
 </div>
 <!-- Разметка модального окна корзины -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"

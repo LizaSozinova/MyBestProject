@@ -1,0 +1,42 @@
+.fontunderlogo {
+    font-weight: 400;
+    font-family: Montserrat,sans-serif;
+    
+  }
+  @font-face {
+    font-weight: 400;
+    font-family:AlayaRozaDemo;
+    src: url("../fonts/AlayaRoza-Regular.ttf") format('truetype');
+  }
+  @font-face {
+    font-weight: 200;
+    font-family:Vetrino;
+    src: url("../fonts/Vetrino.otf") format('truetype');
+  }
+  .text_head{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+    font-family: Vetrino;
+    font-size: 48px; 
+    transform: translateY(2%);
+
+  }
+  .textdesc{
+    color: #000000;
+    font-size: 16px;
+    font-family: Montserrat;
+  }
+  .circle{
+    border: thin solid black; 
+    border-radius: 20px;
+    width: 20%;
+    height: 30px;
+  }
+  .row{
+    padding: 10px;
+    max-width: 150%;
+    
+
+  }
